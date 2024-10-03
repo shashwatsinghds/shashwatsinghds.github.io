@@ -5,6 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shashwat Singh - Career Path</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #0073e6;
+    }
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+    .timeline-entry {
+      opacity: 0;
+      position: relative;
+      padding: 20px;
+      margin: 20px 0;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      transform: translateY(50px);
+    }
+    .timeline-entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
@@ -23,18 +68,49 @@
 <div class="container">
   <section id="career-path">
     <h2>Career Path</h2>
-    <ul>
-      <li><strong>2023-Present:</strong> Data Science & Analytics Research Intern at HUM Lab</li>
-      <li><strong>2023-Present:</strong> Research Professional at the College of Public Health</li>
-      <li><strong>2019-2023:</strong> Data Analyst Intern at PwC India</li>
-      <li><strong>2015-2019:</strong> Bachelor's in Information Technology, India</li>
-    </ul>
+    <div class="timeline">
+      <div class="timeline-entry">
+        <h3>2023-Present</h3>
+        <p>Data Science & Analytics Research Intern at HUM Lab</p>
+      </div>
+      <div class="timeline-entry">
+        <h3>2023-Present</h3>
+        <p>Research Professional at the College of Public Health</p>
+      </div>
+      <div class="timeline-entry">
+        <h3>2019-2023</h3>
+        <p>Data Analyst Intern at PwC India</p>
+      </div>
+      <div class="timeline-entry">
+        <h3>2015-2019</h3>
+        <p>Bachelor's in Information Technology, India</p>
+      </div>
+    </div>
   </section>
 </div>
 
 <footer>
   <p>Connect with me on <a href="https://www.linkedin.com/in/yourlinkedinprofile" target="_blank">LinkedIn</a> | <a href="https://github.com/yourgithubprofile" target="_blank">GitHub</a></p>
 </footer>
+
+<script>
+  // Function to reveal timeline entries when they scroll into view
+  const timelineEntries = document.querySelectorAll('.timeline-entry');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1 // Trigger the animation when 10% of the entry is visible
+  });
+
+  timelineEntries.forEach(entry => {
+    observer.observe(entry);
+  });
+</script>
 
 </body>
 </html>
