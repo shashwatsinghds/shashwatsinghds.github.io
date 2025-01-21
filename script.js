@@ -39,3 +39,40 @@ document.addEventListener("DOMContentLoaded", () => {
   handleScroll(); // Trigger on load
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const sideMenu = document.getElementById("sideMenu");
+  const links = sideMenu.querySelectorAll("a");
+
+  links.forEach(link => {
+      link.addEventListener("click", e => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          sideMenu.style.left = "-250px";
+          window.scrollTo({
+              top: targetSection.offsetTop,
+              behavior: "smooth",
+          });
+      });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".section");
+
+  const observer = new IntersectionObserver(
+      (entries) => {
+          entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add("active");
+              }
+          });
+      },
+      {
+          threshold: 0.2, // Trigger when 20% of the section is visible
+      }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+});
