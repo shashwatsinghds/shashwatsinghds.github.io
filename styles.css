@@ -379,10 +379,14 @@ body {
 
 .contact-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; 
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 5px;
+  width: 50%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
 }
+
 
 .contact-item {
   background-color: #111;
@@ -428,14 +432,15 @@ body {
   transform: scale(1.2);
 }
 
+/* Default state: hidden */
 .section {
   opacity: 0;
   transform: translateY(50px); /* Start slightly shifted */
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* Active class when section is in view */
+/* Active state: visible */
 .section.active {
   opacity: 1;
-  transform: translateY(0); /* Reset position */
+  transform: translateY(0); /* Reset to original position */
 }

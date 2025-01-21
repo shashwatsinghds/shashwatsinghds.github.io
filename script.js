@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
 
@@ -65,7 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
       (entries) => {
           entries.forEach((entry) => {
               if (entry.isIntersecting) {
+                  // Add the active class when the section is visible
                   entry.target.classList.add("active");
+              } else {
+                  // Remove the active class when the section is out of view
+                  entry.target.classList.remove("active");
               }
           });
       },
