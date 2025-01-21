@@ -38,3 +38,4 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", handleScroll);
   handleScroll(); // Trigger on load
 });
+
