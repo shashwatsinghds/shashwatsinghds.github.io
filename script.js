@@ -101,4 +101,22 @@ function copyEmail() {
   });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const timelineItems = document.querySelectorAll(".timeline-item");
+
+  const handleScroll = () => {
+      timelineItems.forEach(item => {
+          const rect = item.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+              item.classList.add("active");
+          } else {
+              item.classList.remove("active");
+          }
+      });
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll(); // Trigger on load
+});
+
 
