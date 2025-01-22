@@ -382,7 +382,7 @@ body {
   justify-content: space-between; 
   flex-wrap: wrap;
   gap: 5px;
-  width: 50%; 
+  width: 70%; 
   max-width: 1200px; 
   margin: 0 auto; 
 }
@@ -443,4 +443,29 @@ body {
 .section.active {
   opacity: 1;
   transform: translateY(0); /* Reset to original position */
+}
+
+.copy-icon {
+  font-size: 1.2rem; /* Adjust size for visibility */
+  color: #00aaff;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-icon:hover {
+  color: #fff;
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+.copy-notification {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: #00aaff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease;
+  position: absolute;
 }

@@ -81,3 +81,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach((section) => observer.observe(section));
 });
+
+function copyEmail() {
+  // Email text to copy
+  const email = "shashwatsingh1@arizona.edu";
+
+  // Copy the email to the clipboard
+  navigator.clipboard.writeText(email).then(() => {
+      // Show the notification
+      const notification = document.getElementById("copyNotification");
+      notification.style.opacity = "1";
+
+      // Hide the notification after 2 seconds
+      setTimeout(() => {
+          notification.style.opacity = "0";
+      }, 2000);
+  }).catch((err) => {
+      console.error("Failed to copy email: ", err);
+  });
+}
+
+
