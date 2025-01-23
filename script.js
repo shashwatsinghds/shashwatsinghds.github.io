@@ -119,4 +119,93 @@ document.addEventListener("DOMContentLoaded", () => {
   handleScroll(); // Trigger on load
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const navbarLinks = document.querySelectorAll(".navbar a");
+  const sections = document.querySelectorAll("section");
 
+  window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+          if (scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+          }
+      });
+
+      navbarLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").includes(current)) {
+              link.classList.add("active");
+          }
+      });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navbarLinks = document.querySelectorAll(".navbar a");
+
+  // Add smooth scrolling for navbar links
+  navbarLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          window.scrollTo({
+              top: targetSection.offsetTop,
+              behavior: "smooth",
+          });
+      });
+  });
+
+  const sections = document.querySelectorAll("section");
+
+  // Highlight the current section in the navbar
+  window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100; // Adjust offset for better accuracy
+          if (scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+          }
+      });
+
+      navbarLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").includes(current)) {
+              link.classList.add("active");
+          }
+      });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const portfolioItems = document.querySelectorAll(".portfolio-item");
+  const modals = document.querySelectorAll(".portfolio-modal");
+  const closeButtons = document.querySelectorAll(".close-modal");
+
+  portfolioItems.forEach(item => {
+      item.addEventListener("click", () => {
+          const target = item.getAttribute("data-target");
+          document.querySelector(target).style.display = "flex";
+      });
+  });
+
+  closeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+          button.closest(".portfolio-modal").style.display = "none";
+      });
+  });
+
+  modals.forEach(modal => {
+      modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+              modal.style.display = "none";
+          }
+      });
+  });
+});

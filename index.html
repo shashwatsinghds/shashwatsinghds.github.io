@@ -24,15 +24,17 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+  
+
     <!-- Hamburger Menu -->
-    <div class="hamburger-menu" id="hamburger">
+    <!-- <div class="hamburger-menu" id="hamburger">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
-    </div>
+    </div> -->
 
     <!-- Side Menu -->
-    <aside class="side-menu" id="sideMenu">
+    <!-- <aside class="side-menu" id="sideMenu">
         <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -41,7 +43,16 @@
             <a href="#contact">Contact</a>
             <a href="#downloads">Downloads</a>
         </nav>
-    </aside>
+    </aside> -->
+
+    <nav class="navbar">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#career-path" class="nav-link">Career Path</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#downloads" class="nav-link">Downloads</a>
+      </nav>
 
     <!-- Main Content -->
     <main>
@@ -49,7 +60,7 @@
         <section id="home" class="section">
             <div class="intro">
                 <h1>Shashwat Singh</h1>
-                <h2>Data Analyst | Machine Learning Engineer</h2>
+                <h2 class="role-title">Data Analyst | Machine Learning Engineer</h2>
                 <p>Analyzing data, building intelligent systems, and shaping insights for the future.</p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/shashwatsinghds" target="_blank" class="linkedin">
@@ -102,10 +113,75 @@
         
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="section">
-            <h2>Portfolio</h2>
-            <p>Coming Soon</p>
+        <section id="portfolio" class="portfolio-section">
+            <h2 class="portfolio-title">Portfolio</h2>
+            <div class="portfolio-container">
+                <!-- Project 1 -->
+                <div class="portfolio-item" data-target="#project1Modal">
+                    <img src="files/Pictures/project1.jpg" alt="Project 1" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Project 1</h3>
+                    </div>
+                </div>
+        
+                <!-- Project 2 -->
+                <div class="portfolio-item" data-target="#project2Modal">
+                    <img src="files/Pictures/project2.jpg" alt="Project 2" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Project 2</h3>
+                    </div>
+                </div>
+        
+                <!-- Project 3 -->
+                <div class="portfolio-item" data-target="#project3Modal">
+                    <img src="files/Pictures/project3.jpg" alt="Project 3" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Project 3</h3>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Modals -->
+            <div id="project1Modal" class="portfolio-modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>Project 1 Details</h3>
+                    <p>Description about Project 1.</p>
+                    <div class="carousel">
+                        <img src="files/Pictures/project1_img1.jpg" alt="Image 1">
+                        <img src="files/Pictures/project1_img2.jpg" alt="Image 2">
+                        <img src="files/Pictures/project1_img3.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+        
+            <div id="project2Modal" class="portfolio-modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>Project 2 Details</h3>
+                    <p>Description about Project 2.</p>
+                    <div class="carousel">
+                        <img src="files/Pictures/project2_img1.jpg" alt="Image 1">
+                        <img src="files/Pictures/project2_img2.jpg" alt="Image 2">
+                        <img src="files/Pictures/project2_img3.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+        
+            <div id="project3Modal" class="portfolio-modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>Project 3 Details</h3>
+                    <p>Description about Project 3.</p>
+                    <div class="carousel">
+                        <img src="files/Pictures/project3_img1.jpg" alt="Image 1">
+                        <img src="files/Pictures/project3_img2.jpg" alt="Image 2">
+                        <img src="files/Pictures/project3_img3.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
         </section>
+        
         
       <!-- Career Path Section -->
 <!-- Career Path Section -->
@@ -246,9 +322,9 @@
             <a href="files/CV_ShashwatSingh_Main.pdf" download>
                 <i class="bi bi-file-earmark-arrow-down"></i> Download My CV
             </a>
-            <a href="files/Portfolio_Summary.pdf" download>
+            <!-- <a href="files/Portfolio_Summary.pdf" download>
                 <i class="bi bi-file-earmark-arrow-down"></i> Download Portfolio Summary
-            </a>
+            </a> -->
         </div>
     </section>
 
