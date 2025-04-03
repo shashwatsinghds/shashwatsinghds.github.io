@@ -519,14 +519,23 @@ body {
   overflow: hidden;
   margin: 0 8px; /* Reduced from 10px */
   border: 2px solid #00aaff; /* Added border to highlight the image */
+  background-color: #fff; /* Moving background color to container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeline-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Changed from cover to contain to show the full image */
-  background-color: #fff; /* Added background to make logos more visible */
-  padding: 3px; /* Added padding inside the circular frame */
+  width: 80%; /* Reduced from 100% to ensure no cutoff */
+  height: 80%; /* Reduced from 100% to ensure no cutoff */
+  object-fit: contain; /* Keep contain to preserve aspect ratio */
+  padding: 0; /* Removed padding as we're now using width/height reduction instead */
+}
+
+/* Special styling for E-Cell images */
+.timeline-image img.ecell-image {
+  width: 105%; /* Larger than standard images */
+  height: 105%; /* Larger than standard images */
 }
 
 .timeline-item.left .timeline-content {
