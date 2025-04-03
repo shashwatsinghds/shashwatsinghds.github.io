@@ -122,29 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const navbarLinks = document.querySelectorAll(".navbar a");
   const sections = document.querySelectorAll("section");
-
-  window.addEventListener("scroll", () => {
-      let current = "";
-
-      sections.forEach((section) => {
-          const sectionTop = section.offsetTop - 100; // Adjust offset as needed
-          if (scrollY >= sectionTop) {
-              current = section.getAttribute("id");
-          }
-      });
-
-      navbarLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href").includes(current)) {
-              link.classList.add("active");
-          }
-      });
-  });
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const navbarLinks = document.querySelectorAll(".navbar a");
+  let clickedSection = null;
+  let clickTime = 0;
 
   // Add smooth scrolling for navbar links
   navbarLinks.forEach((link) => {
@@ -152,6 +131,14 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
           const targetId = link.getAttribute("href").substring(1);
           const targetSection = document.getElementById(targetId);
+          
+          // Store which section was clicked and when
+          clickedSection = targetId;
+          clickTime = Date.now();
+          
+          // Update active class immediately for better user feedback
+          navbarLinks.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
 
           window.scrollTo({
               top: targetSection.offsetTop,
@@ -160,25 +147,43 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  const sections = document.querySelectorAll("section");
-
   // Highlight the current section in the navbar
   window.addEventListener("scroll", () => {
+      // If a section was clicked recently (within last 1.5 seconds), prioritize it
+      if (clickedSection && Date.now() - clickTime < 1500) {
+          return; // Skip the rest of the function to keep the clicked link active
+      }
+      
       let current = "";
+      
+      // Check if we're at the bottom of the page
+      const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 100;
+      
+      if (isAtBottom) {
+          // If we're at the bottom of the page, highlight the Downloads link
+          current = "downloads";
+      } else {
+          // Otherwise, determine the current section based on scroll position
+          sections.forEach((section) => {
+              const sectionTop = section.offsetTop - 100;
+              const sectionBottom = sectionTop + section.offsetHeight;
+              
+              // Check if we're within this section's boundaries
+              if (scrollY >= sectionTop && scrollY < sectionBottom) {
+                  current = section.getAttribute("id");
+              }
+          });
+      }
 
-      sections.forEach((section) => {
-          const sectionTop = section.offsetTop - 100; // Adjust offset for better accuracy
-          if (scrollY >= sectionTop) {
-              current = section.getAttribute("id");
-          }
-      });
-
-      navbarLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href").includes(current)) {
-              link.classList.add("active");
-          }
-      });
+      // Only update if we found a valid section
+      if (current) {
+          navbarLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href").includes(current)) {
+                  link.classList.add("active");
+              }
+          });
+      }
   });
 });
 
